@@ -1,0 +1,14 @@
+rule "Print out lower-case tokens"
+	when
+		de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token ( tokenText : coveredText, coveredText == coveredText.toLowerCase )
+	then
+		System.out.println("Found a lower case token with text \"" + tokenText + "\"");
+end
+
+
+rule "Print out long tokens with more than 5 characters"
+	when
+		de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token ( tokenText : coveredText, end - begin > 5 )
+	then
+		System.out.println("Found a long token with more than 5 characters \"" + tokenText + "\"");
+end
